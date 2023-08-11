@@ -1,6 +1,6 @@
 import React from 'react';
-import WeatherCard from './weather/WeatherCard';
-import WeatherInfoCard from './weather/WeatherInfoCard';
+import WeatherCard from './Weather/WeatherCard';
+import WeatherInfoCard from './Weather/WeatherInfoCard';
 
 const ParentComponent = ({ weatherData }) => {
   return (

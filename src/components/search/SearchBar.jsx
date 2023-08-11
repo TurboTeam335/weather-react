@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSearchBar } from './SearchComponents';
-import WeatherCard from '../weather/WeatherCard';
+import WeatherCard from '../Weather/WeatherCard';
 
 const SearchBar = () => {
   const { query, handleInputChange, handleSearchClick } = useSearchBar();

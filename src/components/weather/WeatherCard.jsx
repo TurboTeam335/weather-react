@@ -17,8 +17,9 @@ const WeatherCard = ({ weatherData }) => {
       <h1>{city}</h1>
       <p>{formattedDate}</p>
       <i className={`wi ${iconClass} weather-icon-gradient`} />
-      <p>Temperature: {temperature}°F</p>
-      <p>Weather: {weather[0].description}</p>
+      <p>{temperature}°F</p>
+      <p>Feels Like {Math.floor(main.feels_like)}°F</p>
+      <p>{weather[0].description}</p>
     </div>
   );
 };

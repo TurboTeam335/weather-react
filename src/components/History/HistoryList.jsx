@@ -1,4 +1,4 @@
-import { saveToLocalStorage, loadFromLocalStorage, removeFromLocalStorage } from '../utils/localStorageUtil';
+import { saveToLocalStorage, loadFromLocalStorage, removeFromLocalStorage } from '../../utils/localStorage';
 
 // Example usage
 const key = 'weatherHistory';

@@ -8,14 +8,15 @@ const WeatherInfoCard = ({ weatherData }) => {
 
   return (
     <div>
-      <p>Min Temperature: {main.temp_min}°F</p>
-      <p>Max Temperature: {main.temp_max}°F</p>
-      <p>Humidity: {main.humidity}%</p>
+      <p>Low {Math.floor(main.temp_min)}°F</p>
+      <p>High {Math.floor(main.temp_max)}°F</p>
+      
+      <p>Humidity {main.humidity}%</p>
       {/* <p>Pressure: {main.pressure} hPa</p> */}
-      <p>Wind Speed: {wind.speed} mph</p>
-      <p>Cloudiness: {clouds ? clouds.all : 0}%</p>
-      {rain && <p>Rain: {rain['3h'] || rain['1h']} mm</p>}
-      {snow && <p>Snow: {snow['3h'] || snow['1h']} mm</p>}
+      <p>Wind {Math.floor(wind.speed)} mph</p>
+      <p>Cloudiness {clouds ? clouds.all : 0}%</p>
+      {rain && <p>Rain {Math.floor(rain['3h'] || rain['1h'])}%</p>}
+      {snow && <p>Snow {Math.floor(snow['3h'] || snow['1h'])}%</p>}
     </div>
   );
 };

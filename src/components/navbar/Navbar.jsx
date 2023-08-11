@@ -2,8 +2,8 @@ import React from 'react';
 import { AppBar, Select, MenuItem } from '@mui/material';
 import { useTheme } from '@mui/system';
 import { StyledToolbar } from '../../styles/StyledComponents';
-import { useSearchBar } from '../search/SearchComponents';
-import SearchContainerComponent from '../search/SearchContainer';
+import { useSearchBar } from '../Search/SearchComponents';
+import SearchContainerComponent from '../Search/SearchContainer';
 
 const Navbar = ({ setWeatherData }) => {
   const theme = useTheme();
