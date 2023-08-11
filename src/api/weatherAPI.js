@@ -1,8 +1,11 @@
-import { apiKey } from './config';
 import { handleResponse } from './utils';
 
+const apiKey = process.env.REACT_APP_API_KEY;
+const baseUrl = 'https://api.openweathermap.org/data/2.5';
+
 export const fetchHourlyWeather = (city) => {
-  return fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&appid=${apiKey}`)
+  const url = `${baseUrl}/forecast?q=${city}&units=imperial&appid=${apiKey}`;
+  return fetch(url)
     .then(handleResponse)
     .then((data) => data.list)
     .catch((error) => {
@@ -12,7 +15,8 @@ export const fetchHourlyWeather = (city) => {
 };
 
 export const fetchWeatherByLocation = (lat, lon) => {
-  return fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=imperial&appid=${apiKey}`)
+  const url = `${baseUrl}/weather?lat=${lat}&lon=${lon}&units=imperial&appid=${apiKey}`;
+  return fetch(url)
     .then(handleResponse)
     .then((data) => data)
     .catch((error) => {
@@ -22,7 +26,8 @@ export const fetchWeatherByLocation = (lat, lon) => {
 };
 
 export const fetchWeatherAlerts = (lat, lon) => {
-  return fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely,hourly,daily,flags&appid=${apiKey}`)
+  const url = `${baseUrl}/onecall?lat=${lat}&lon=${lon}&exclude=minutely,hourly,daily,flags&appid=${apiKey}`;
+  return fetch(url)
     .then(handleResponse)
     .then((data) => data.alerts)
     .catch((error) => {
@@ -32,7 +37,8 @@ export const fetchWeatherAlerts = (lat, lon) => {
 };
 
 export const fetchDailyWeather = (city) => {
-  return fetch(`https://api.openweathermap.org/data/2.5/forecast/daily?q=${city}&cnt=7&units=imperial&appid=${apiKey}`)
+  const url = `${baseUrl}/forecast/daily?q=${city}&cnt=7&units=imperial&appid=${apiKey}`;
+  return fetch(url)
     .then(handleResponse)
     .then((data) => data.list)
     .catch((error) => {
@@ -40,4 +46,3 @@ export const fetchDailyWeather = (city) => {
       throw error;
     });
 };
-

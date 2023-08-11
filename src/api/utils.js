@@ -1,6 +1,9 @@
 export const handleResponse = (response) => {
-  if (!response.ok) {
-    throw new Error('Network response was not ok');
+  if (response.ok) {
+    return response.json();
+  } else {
+    return response.json().then((error) => {
+      throw new Error(error.message);
+    });
   }
-  return response.json();
 };
