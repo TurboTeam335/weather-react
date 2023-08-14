@@ -1,36 +1,58 @@
 import React from 'react';
-import { AppBar, Select, MenuItem } from '@mui/material';
-import { useTheme } from '@mui/system';
+import { AppBar } from '@mui/material';
 import { StyledToolbar } from '../../styles/StyledComponents';
 import { useSearchBar } from '../Search/SearchComponents';
 import SearchContainerComponent from '../Search/SearchContainer';
+import { fetchHourlyWeather } from '../../api/weatherAPI';
+import TemperatureSelector from '../Navbar/TemperatureSelector';
+import MenuButton from '../Navbar/MenuButton';
+import { usePreviousSearches } from '../History/usePreviousSearches.js';
 
-const Navbar = ({ setWeatherData }) => {
-  const theme = useTheme();
-  const { query, handleInputChange, handleSearchClick } =
-    useSearchBar(setWeatherData);
-  const [temperatureUnit, setTemperatureUnit] = React.useState('fahrenheit');
+const Navbar = ({ setWeatherData, setTemperatureUnit, temperatureUnit }) => {
+  const {
+    query,
+    handleInputChange,
+    handleSearchClick: executeSearch,
+  } = useSearchBar(setWeatherData);
 
   const handleTemperatureChange = event => {
     setTemperatureUnit(event.target.value);
   };
 
+  const {
+    previousSearches,
+    handleDeleteClick,
+    handlePreviousSearchClick,
+    saveSearch,
+  } = usePreviousSearches(setWeatherData);
+
+  const handleSearchClick = async () => {
+    try {
+      const { city } = await fetchHourlyWeather(query);
+      await saveSearch(city);
+      executeSearch();
+    } catch (error) {
+      console.error('Error executing search:', error);
+    }
+  };
+
   return (
     <AppBar position='static' color='transparent'>
       <StyledToolbar>
+        <MenuButton
+          previousSearches={previousSearches}
+          handleDeleteClick={handleDeleteClick}
+          handlePreviousSearchClick={handlePreviousSearchClick}
+        />
         <SearchContainerComponent
           query={query}
           handleInputChange={handleInputChange}
           handleSearchClick={handleSearchClick}
         />
-        <Select
-          value={temperatureUnit}
-          onChange={handleTemperatureChange}
-          style={{ color: theme.palette.text.primary }}
-        >
-          <MenuItem value='fahrenheit'>&deg;F</MenuItem>
-          <MenuItem value='celsius'>&deg;C</MenuItem>
-        </Select>
+        <TemperatureSelector
+          temperatureUnit={temperatureUnit}
+          handleTemperatureChange={handleTemperatureChange}
+        />
       </StyledToolbar>
     </AppBar>
   );

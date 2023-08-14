@@ -2,8 +2,8 @@ import React from 'react';
 import getWeatherIcon from '../../utils/weatherIcons';
 import { getWeatherDetails } from '../../utils/weatherInfo';
 
-const WeatherCard = ({ weatherData }) => {
-  const weatherDetails = getWeatherDetails(weatherData);
+const WeatherCard = ({ weatherData, temperatureUnit }) => { 
+  const weatherDetails = getWeatherDetails(weatherData, temperatureUnit); 
   if (!weatherDetails) return null;
 
   const { city, date, weather, main } = weatherDetails;
@@ -17,8 +17,8 @@ const WeatherCard = ({ weatherData }) => {
       <h1>{city}</h1>
       <p>{formattedDate}</p>
       <i className={`wi ${iconClass} weather-icon-gradient`} />
-      <p>{temperature}°F</p>
-      <p>Feels Like {Math.floor(main.feels_like)}°F</p>
+      <p>{Math.floor(weatherDetails.main.temp)}°{temperatureUnit === 'fahrenheit' ? 'F' : 'C'}</p> {/* Adjust unit */}
+      <p>Feels Like {Math.floor(weatherDetails.main.feels_like)}°{temperatureUnit === 'fahrenheit' ? 'F' : 'C'}</p> {/* Adjust unit */}
       <p>{weather[0].description}</p>
     </div>
   );

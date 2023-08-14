@@ -9,8 +9,7 @@ function App() {
   const [weatherData, setWeatherData] = useState(null);
   return (
     <ThemeProvider theme={theme}>
-      <Navbar setWeatherData={setWeatherData} />
-      <ParentComponent weatherData={weatherData} />
+      <ParentComponent weatherData={weatherData} setWeatherData={setWeatherData} />
     </ThemeProvider>
   );
 }
