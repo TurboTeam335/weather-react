@@ -17,10 +17,11 @@ export const fetchHourlyWeather = location => {
     .then(handleResponse)
     .then(data => ({
       list: data.list,
-      city: data.city.name,
-      state: data.city.state, // Assuming state is available here
-      country: data.city.country
+      city: data.city ? data.city.name : undefined,
+      state: data.city ? data.city.state : undefined, // Assuming state is available here
+      country: data.city ? data.city.country : undefined
     }))
+    
     .catch(error => {
       console.error('Fetch error:', error);
       throw error;

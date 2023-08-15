@@ -1,7 +1,7 @@
-.search-bar {
-  color: #E4EFFF; /* or any other color you want for the text */
+/* .search-bar {
+  color: #e4efff; 
   position: relative;
-  background: #668EBC;
+  background: #668ebc;
   border-radius: 20px;
   display: flex;
   align-items: center;
@@ -9,12 +9,13 @@
 }
 
 .search-input {
-  color: #E4EFFF; /* or any other color you want for the text */
+  color: #e4efff; 
   position: relative;
-  background: #668EBC;
+  background: #668ebc;
   border-radius: 20px;
   display: flex;
   align-items: center;
   padding: 0 65px;
 }
 
+ */

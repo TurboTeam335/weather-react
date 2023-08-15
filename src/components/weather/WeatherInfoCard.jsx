@@ -4,7 +4,7 @@ import {
   WeatherInfoContainer,
   WeatherDetail,
   WeatherDiv
-} from '../../styles/WeatherInfoContainer'; // Import WeatherDetail
+} from '../../styles/WeatherInfoContainer'; 
 
 const WeatherInfoCard = ({ weatherData, temperatureUnit }) => {
   const weatherDetails = getWeatherDetails(weatherData, temperatureUnit);

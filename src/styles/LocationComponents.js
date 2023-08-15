@@ -4,7 +4,8 @@ import theme from './theme';
 
 export const LocationAndDateContainer = styled('div')`
   color: ${theme.palette.custom.white}; // Using the custom white color from the theme
-`;
+  margin: 0 18px;
+  `;
 
 export const City = styled('h1')`
 font-size: 2.5em;

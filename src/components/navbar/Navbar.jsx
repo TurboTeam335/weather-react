@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { AppBar } from '@mui/material';
 import { StyledToolbar } from '../../styles/NavbarComponents';
 import { useSearchBar } from '../Search/SearchComponents';
@@ -27,13 +27,17 @@ const Navbar = ({ setWeatherData, setTemperatureUnit, temperatureUnit }) => {
     saveSearch,
   } = usePreviousSearches(setWeatherData);
 
+  const [noResults, setNoResults] = useState(false);
+
   const handleSearchClick = async () => {
     try {
       const { city } = await fetchHourlyWeather(query);
       await saveSearch(city);
       executeSearch();
+      setNoResults(false); // Reset no results state when search is successful
     } catch (error) {
       console.error('Error executing search:', error);
+      setNoResults(true); // Set no results state when there is an error
     }
   };
 
@@ -46,14 +50,24 @@ const Navbar = ({ setWeatherData, setTemperatureUnit, temperatureUnit }) => {
           handlePreviousSearchClick={handlePreviousSearchClick}
         />
         <SearchContainerComponent
+          className='SearchContainer'
           query={query}
           handleInputChange={handleInputChange}
           handleSearchClick={handleSearchClick}
+          noResults={noResults}
+          setNoResults={setNoResults} // Pass this down
         />
+
         <TemperatureSelector
           temperatureUnit={temperatureUnit}
           handleTemperatureChange={handleTemperatureChange}
         />
+        {/* {noResults && (
+          <div className='error-message'>
+            <p>Search Results</p>
+            <p>No Results Found</p>
+          </div>
+        )} */}
       </StyledToolbar>
     </AppBar>
   );

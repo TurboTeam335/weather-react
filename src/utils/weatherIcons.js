@@ -6,8 +6,8 @@ const getWeatherIcon = (code) => {
     case '01n': return 'wi-night-clear';
     case '02d': return 'wi-day-cloudy';
     case '02n': return 'wi-night-alt-cloudy';
-    case '03d': return 'wi-day-cloudy-high'; 
-    case '03n': return 'wi-night-alt-cloudy-high'; 
+    case '03d': return 'wi-day-cloudy'; 
+    case '03n': return 'wi-night-cloudy'
     case '04d': return 'wi-cloudy'; 
     case '04n': return 'wi-night-cloudy'; 
     case '09d': return 'wi-day-showers'; 
