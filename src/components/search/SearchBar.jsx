@@ -2,12 +2,15 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useSearchBar } from './SearchComponents';
 import useGoogleAutocomplete from './useGoogleAutocomplete';
 import WeatherCard from '../Weather/WeatherCard';
+import { useTheme } from '@mui/system';
+import './styles/SearchBar.css'
 
 const SearchBar = () => {
   const { query, setQuery, handleInputChange, handleSearchClick } = useSearchBar();
   const [weatherData, setWeatherData] = useState(null);
   const searchBar = useSearchBar(setWeatherData);
   const google = window.google;
+  const theme = useTheme();
 
 
   const handlePlaceSelect = (place) => {
@@ -44,6 +47,7 @@ const SearchBar = () => {
         placeholder='Search City or Zip Code'
         value={searchBar.query}
         onChange={searchBar.handleInputChange}
+        style={{ color: '#E4EFFF', background: '#668EBC', borderRadius: '20px' }}
       />
       <button onClick={handleSearchClick}>Search</button>
       <WeatherCard weatherData={weatherData} />

@@ -1,12 +1,13 @@
 import React from 'react';
 import { AppBar } from '@mui/material';
-import { StyledToolbar } from '../../styles/StyledComponents';
+import { StyledToolbar } from '../../styles/NavbarComponents';
 import { useSearchBar } from '../Search/SearchComponents';
 import SearchContainerComponent from '../Search/SearchContainer';
 import { fetchHourlyWeather } from '../../api/weatherAPI';
 import TemperatureSelector from '../Navbar/TemperatureSelector';
 import MenuButton from '../Navbar/MenuButton';
 import { usePreviousSearches } from '../History/usePreviousSearches.js';
+import './styles/Navbar.css';
 
 const Navbar = ({ setWeatherData, setTemperatureUnit, temperatureUnit }) => {
   const {
@@ -37,8 +38,8 @@ const Navbar = ({ setWeatherData, setTemperatureUnit, temperatureUnit }) => {
   };
 
   return (
-    <AppBar position='static' color='transparent'>
-      <StyledToolbar>
+    <AppBar position='static' color='transparent' elevation={0}>
+      <StyledToolbar className='navbar'>
         <MenuButton
           previousSearches={previousSearches}
           handleDeleteClick={handleDeleteClick}

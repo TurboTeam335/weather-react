@@ -5,22 +5,28 @@ const baseUrl = 'https://api.openweathermap.org/data/2.5';
 
 export const fetchHourlyWeather = location => {
   let queryParam;
-  if (/^\d+$/.test(location)) { // Check if it's a zip code
-    queryParam = `zip=${location},us`; // Assuming USA for zip code; adjust if needed
+  if (/^\d+$/.test(location)) {
+    queryParam = `zip=${location},us`;
   } else {
-    const [city, state, country] = location.split(','); // Split location into parts
-    queryParam = `q=${city}${state ? ', ' + state : ''}${country ? ', ' + country : ''}`; // Construct query based on available parts
+    const [city, state, country] = location.split(',').map(item => item.trim());
+    queryParam = `q=${city}${state ? ',' + state : ''}${country ? ',' + country : ''}`;
   }
 
   const url = `${baseUrl}/forecast?${queryParam}&units=imperial&appid=${apiKey}`;
   return fetch(url)
     .then(handleResponse)
-    .then(data => ({ list: data.list, city: data.city.name }))
+    .then(data => ({
+      list: data.list,
+      city: data.city.name,
+      state: data.city.state, // Assuming state is available here
+      country: data.city.country
+    }))
     .catch(error => {
       console.error('Fetch error:', error);
       throw error;
     });
 };
+
 
 
 

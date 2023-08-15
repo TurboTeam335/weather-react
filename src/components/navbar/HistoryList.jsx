@@ -1,20 +1,29 @@
 import React from 'react';
 import { MenuItem, IconButton, Menu } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
+import { useTheme } from '@mui/system'; // Import the useTheme hook
 
 const HistoryList = ({
   previousSearches,
   handleCloseMenu,
   handleDeleteClick,
-  anchorEl, // Add anchorEl as a prop
-  handlePreviousSearchClick, // Add handlePreviousSearchClick as a prop
+  anchorEl,
+  handlePreviousSearchClick,
 }) => {
+  const theme = useTheme(); // Get the current theme
+
   return (
     <>
       <Menu
         anchorEl={anchorEl}
         open={Boolean(anchorEl)}
         onClose={handleCloseMenu}
+        PaperProps={{
+          style: {
+            backgroundColor: theme.palette.custom.blue, // Set the background color
+            color: theme.palette.custom.white, // Set the text color
+          },
+        }}
       >
         {previousSearches.map((search, index) => (
           <MenuItem key={index}>
@@ -28,7 +37,8 @@ const HistoryList = ({
             >
               <div
                 onClick={() => {
-                  handlePreviousSearchClick(search.query); // Call the new function with the chosen city
+                  handlePreviousSearchClick(search.query);
+                  handleCloseMenu();
                 }}
               >
                 {search.query}
@@ -38,7 +48,9 @@ const HistoryList = ({
                 aria-label='delete'
                 onClick={() => handleDeleteClick(index)}
               >
-                <CloseIcon />
+                <CloseIcon 
+                sx={{ color: theme.palette.custom.white }}
+                />
               </IconButton>
             </div>
           </MenuItem>

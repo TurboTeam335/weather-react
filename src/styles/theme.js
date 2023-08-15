@@ -5,18 +5,15 @@ const theme = createTheme({
     fontFamily: '"Roboto", sans-serif',
   },
   palette: {
-    background: {
-      default: '#102B6D',
-    },
-    text: {
-      // primary: '#E4EFFF',
-    },
-    secondary: {
-      main: '#6ED4FF',
+    custom: {
+      blue: 'rgba(16, 43, 109, .95)',
+      white: '#E4EFFF',
+      lightblue: '#6ED4FF',
     },
   },
   gradients: {
-    weatherIcons: 'linear-gradient(187deg, rgba(251,167,128,1) 18%, rgba(246,207,103,1) 50%)',
+    weatherIcons:
+      'linear-gradient(187deg, rgba(251,167,128,1) 18%, rgba(246,207,103,1) 50%)',
   },
 });
 

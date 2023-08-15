@@ -8,21 +8,28 @@ export const useSearchBar = (setWeatherData) => {
     setQuery(e.target.value);
   };
 
-  const handleSearchClick = () => {
-    console.log('Search Query:', query);
-
-    fetchHourlyWeather(query)
-    .then(data => {
-      console.log('Hourly Weather Data:', data);
-      setWeatherData(data); // Update the weather data in the parent component
-    })
-    .catch(error => {
-      console.error('An error occurred while fetching the weather:', error);
-    });
-    console.log(typeof setWeatherData); // should log "function"
-    console.log(setWeatherData); // should log the function definition
+  const handleSearchClick = async () => {
     
+    try {
+      const { city } = await fetchHourlyWeather(query);
+      // Handle saving the search, executing the search, etc.
+  
+      // Update the weather data in the parent component
+      fetchHourlyWeather(query)
+        .then(data => {
+          console.log('Hourly Weather Data:', data);
+          setWeatherData(data);
+        })
+        .catch(error => {
+          console.error('An error occurred while fetching the weather:', error);
+        });
+  
+      setQuery(''); // Reset the query after successful search
+    } catch (error) {
+      console.error('Error executing search:', error);
+    }
   };
+  
 
   return {
     query,
@@ -30,4 +37,3 @@ export const useSearchBar = (setWeatherData) => {
     handleSearchClick,
   };
 };
-

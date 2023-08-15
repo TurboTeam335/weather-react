@@ -7,6 +7,8 @@ const DailyForecast = ({ weatherData, temperatureUnit }) => {
     return null;
   }
 
+  const today = new Date().toLocaleDateString();
+
   const dailyData = weatherData.list.reduce((acc, entry) => {
     const date = new Date(entry.dt * 1000).toLocaleDateString();
     const temp_min = temperatureUnit === 'fahrenheit'
@@ -36,7 +38,8 @@ const DailyForecast = ({ weatherData, temperatureUnit }) => {
       {Object.values(dailyData).map((entry, index) => {
         const iconClass = getWeatherIcon(entry.icon);
         const date = new Date(entry.date);
-        const dayName = date.toLocaleString('en-US', { weekday: 'short' });
+        const isToday = date.toLocaleDateString() === today;
+        const dayName = isToday ? 'Today' : date.toLocaleString('en-US', { weekday: 'short' });
 
         return (
           <Box key={index} display='flex' flexDirection='column' width={{ xs: '50%', sm: '25%', md: '12.5%' }}>
