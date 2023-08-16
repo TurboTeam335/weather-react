@@ -55,7 +55,7 @@ The application will be available on `http://localhost:3000/`.
 ## Usage
 
 You can access the deployed site using the following link: [WeatherHub
-]()
+](https://turboteam335.github.io/weather-react/)
 
 - Use the search box to search for a city or zip
 - Be able to view the weather plus the forecast up to 5 days
