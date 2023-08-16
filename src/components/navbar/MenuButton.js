@@ -28,8 +28,8 @@ const MenuButton = ({ previousSearches, handleDeleteClick, handlePreviousSearchC
         onClose={handleCloseMenu}
         PaperProps={{
           style: {
-            backgroundColor: theme.palette.custom.blue, // Set the background color
-            color: theme.palette.custom.white, // Set the text color
+            backgroundColor: theme.palette.custom.blue, 
+            color: theme.palette.custom.white, 
           },
         }}
       >
@@ -40,8 +40,8 @@ const MenuButton = ({ previousSearches, handleDeleteClick, handlePreviousSearchC
           anchorEl={anchorEl}
           handlePreviousSearchClick={handlePreviousSearchClick}
           style={{
-            backgroundColor: theme.palette.custom.blue, // Set the background color for HistoryList
-            color: theme.palette.custom.white, // Set the text color for HistoryList
+            backgroundColor: theme.palette.custom.blue, 
+            color: theme.palette.custom.white, 
           }}
         />
       </Menu>

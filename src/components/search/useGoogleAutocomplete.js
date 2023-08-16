@@ -7,7 +7,7 @@ const useGoogleAutocomplete = (handleSelect) => {
     if (!searchInputRef.current) return;
 
     const autocomplete = new window.google.maps.places.Autocomplete(searchInputRef.current, {
-      types: ['(cities)'], // Restrict to city search
+      types: ['(cities)'], 
     });
 
     autocomplete.addListener('place_changed', () => {

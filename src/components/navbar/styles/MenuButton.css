@@ -1,8 +1,8 @@
 .icon-button {
-  color: #E4EFFF; /* Assuming this is the desired color for the IconButton */
+  color: #E4EFFF; 
 }
 
 .menu-paper {
-  background-color: rgba(16, 43, 109, .7); /* Assuming this is the desired background color for the Menu */
-  color: #E4EFFF; /* Assuming this is the desired text color for the Menu */
+  background-color: rgba(16, 43, 109, .7); 
+  color: #E4EFFF; 
 }

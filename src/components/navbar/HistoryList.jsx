@@ -1,7 +1,7 @@
 import React from 'react';
 import { MenuItem, IconButton, Menu } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
-import { useTheme } from '@mui/system'; // Import the useTheme hook
+import { useTheme } from '@mui/system'; 
 
 const HistoryList = ({
   previousSearches,
@@ -10,7 +10,7 @@ const HistoryList = ({
   anchorEl,
   handlePreviousSearchClick,
 }) => {
-  const theme = useTheme(); // Get the current theme
+  const theme = useTheme(); 
 
   return (
     <>
@@ -20,8 +20,8 @@ const HistoryList = ({
         onClose={handleCloseMenu}
         PaperProps={{
           style: {
-            backgroundColor: theme.palette.custom.blue, // Set the background color
-            color: theme.palette.custom.white, // Set the text color
+            backgroundColor: theme.palette.custom.blue, 
+            color: theme.palette.custom.white, 
           },
         }}
       >

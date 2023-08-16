@@ -5,7 +5,7 @@ export const getWeatherDetails = (weatherData, temperatureUnit) => {
   
 
   const { list, city } = weatherData;
-  console.log(city)
+  // console.log(city)
   const { main, wind, weather, clouds, rain, snow, sys } = list[0];
   const date = new Date(list[0].dt * 1000);
   // const windSpeedMph = (wind.speed * 2.23694).toFixed(2);
@@ -15,13 +15,13 @@ export const getWeatherDetails = (weatherData, temperatureUnit) => {
   const temperature = temperatureUnit === 'fahrenheit' ? temperatureInFahrenheit : temperatureInCelsius;
   const feelsLikeTemperature = temperatureUnit === 'fahrenheit' ? main.feels_like : (main.feels_like - 32) * 5 / 9;
 
-  // Convert wind speed to kph if temperature unit is Celsius
+
   const windSpeed =
     temperatureUnit === 'fahrenheit' ? wind.speed * 2.23694 : wind.speed * 3.6;
 
     return {
-      city: city, // Directly use city string
-      country: weatherData.country, // Extract country from weatherData
+      city: city, 
+      country: weatherData.country, 
       main: {
       ...main,
       temp: temperature,

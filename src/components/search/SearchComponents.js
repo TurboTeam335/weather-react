@@ -14,7 +14,7 @@ export const useSearchBar = (setWeatherData) => {
     const handleSearchClick = async () => {
       try {
         const data = await fetchHourlyWeather(query);
-        console.log("data:", data); // Debugging log
+        // console.log("data:", data); // Debugging log
         if (data && data.city) {
           setWeatherData(data);
           setNoResults(false);
@@ -23,8 +23,8 @@ export const useSearchBar = (setWeatherData) => {
         }
         setQuery('');
       } catch (error) {
-        console.log("Error during search:", error.message); // Debugging log
-        setNoResults(true); // Setting noResults to true when an error occurs
+        // console.log("Error during search:", error.message); // Debugging log
+        setNoResults(true); 
       }
     };
     

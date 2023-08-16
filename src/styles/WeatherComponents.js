@@ -7,19 +7,34 @@ export const WeatherCardContainer = styled('div')(({ theme }) => ({
   alignItems: 'center',
   justifyContent: 'center',
   '& i': {
-    fontSize: '13em',
+    fontSize: '10em',
+    [theme.breakpoints.down('md')]: {
+      fontSize: '8em',
+    },
+    [theme.breakpoints.down('sm')]: {
+      fontSize: '6em',
+    },
     padding: '0 8%',
   },
   '& .temperature': {
-    fontSize: '6em',
+    fontSize: '4em',
+    [theme.breakpoints.down('md')]: {
+      fontSize: '3.5em',
+    },
+    [theme.breakpoints.down('sm')]: {
+      fontSize: '2.5em',
+    },
     margin: '0',
     lineHeight: '0.9em',
   },
-  '& .description-container': {
-    textAlign: 'center', 
-  },
   '& .feels-like-description': {
-    fontSize: '1.25em',
+    fontSize: '1em',
+    [theme.breakpoints.down('md')]: {
+      fontSize: '0.9em',
+    },
+    [theme.breakpoints.down('sm')]: {
+      fontSize: '0.8em',
+    },
     margin: '0',
     lineHeight: '1.2em',
   },

@@ -16,7 +16,7 @@ const WeatherCard = ({ weatherData, temperatureUnit }) => {
   const { weather, main } = weatherDetails;
   const temperature = Math.floor(main.temp);
   const iconClass = getWeatherIcon(weather[0].icon);
-  const description = capitalizeFirstLetter(weather[0].description); // Capitalize the description
+  const description = capitalizeFirstLetter(weather[0].description);
 
   return (
     <WeatherCardContainer>

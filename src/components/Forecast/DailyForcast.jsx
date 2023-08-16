@@ -3,6 +3,11 @@ import { Box, Divider } from '@mui/material';
 import getWeatherIcon from '../../utils/weatherIcons';
 import { getGradient } from '../../styles/temperatureColors';
 import { useTheme } from '@mui/material/styles';
+import {
+  StyledBox,
+  DailyContainer,
+  DailyItemContainer,
+} from '../../styles/DailyForecastStyles';
 
 const DailyForecast = ({ weatherData, temperatureUnit }) => {
   const theme = useTheme();
@@ -22,7 +27,7 @@ const DailyForecast = ({ weatherData, temperatureUnit }) => {
       temperatureUnit === 'fahrenheit'
         ? entry.main.temp_max
         : ((entry.main.temp_max - 32) * 5) / 9;
-
+    // if (date === today) return acc;
     if (!acc[date]) {
       acc[date] = {
         date: date,
@@ -40,23 +45,10 @@ const DailyForecast = ({ weatherData, temperatureUnit }) => {
 
   return (
     <>
-      <Box
-        display='flex'
-        justifyContent='flex-start'
-        width='100%'
-        paddingLeft={1}
-        color='custom.white'
-        lineHeight='0.5em'
-      >
-        <h3>6-Day Forecast</h3>
-      </Box>
-      <Box
-        display='flex'
-        flexDirection='column' // Add flex direction to stack children vertically
-        bgcolor='custom.blue'
-        color='custom.white'
-        borderRadius={2}
-      >
+      <StyledBox>
+        <h3>5-Day Forecast</h3>
+      </StyledBox>
+      <DailyContainer>
         {Object.values(dailyData).map((entry, index, array) => {
           const iconClass = getWeatherIcon(entry.icon);
           const date = new Date(entry.date);
@@ -64,55 +56,71 @@ const DailyForecast = ({ weatherData, temperatureUnit }) => {
           const dayName = isToday
             ? 'Today'
             : date.toLocaleString('en-US', { weekday: 'short' });
-            return (
-              <>
-                <Box
-                  key={index}
-                  display='flex'
-                  alignItems='center'
-                  justifyContent='space-between' // Change this to 'space-between'
-                  fontSize={20}
-                  width='100%'
-                  padding={1}
-                >
-                  <Box width='20%' textAlign='center'><p>{dayName}</p></Box> {/* Set a specific width and center the text */}
-                  <Box width='20%' textAlign='center'>
-                    <i
-                      className={`wi ${iconClass} weather-icon-gradient`}
-                      style={{ fontSize: '1.5em' }}
-                    />
-                  </Box>
-                  <Box width='20%' textAlign='center'><p>{Math.floor(entry.temp_min)}°{temperatureUnit === 'fahrenheit' ? 'F' : 'C'}</p></Box>
-                  <Box width='35%'>
-                    <div
-                      style={{
-                        width: '100%', // Set this to 100%
-                        height: '10px',
-                        background: getGradient(
-                          Math.floor(entry.temp_min),
-                          Math.floor(entry.temp_max),
-                          temperatureUnit
-                        ),
-                        borderRadius: '20px',
-                      }}
-                    />
-                  </Box>
-                  <Box width='20%' textAlign='center'><p>{Math.floor(entry.temp_max)}°{temperatureUnit === 'fahrenheit' ? 'F' : 'C'}</p></Box>
+          return (
+            <>
+              <DailyItemContainer key={index}>
+                <Box width='20%' textAlign='center'>
+                  <p>{dayName}</p>
+                </Box>{' '}
+                {/* Set a specific width and center the text */}
+                <Box width='20%' textAlign='center'>
+                  <i
+                    className={`wi ${iconClass} weather-icon-gradient`}
+                    style={{ fontSize: '1.5em' }}
+                  />
                 </Box>
-                {index < array.length - 1 && (
+                <Box width='20%' textAlign='center'>
+                  <p>
+                    {Math.floor(entry.temp_min)}°
+                    {temperatureUnit === 'fahrenheit' ? 'F' : 'C'}
+                  </p>
+                </Box>
+                <Box width='35%'>
+                  <div
+                    className='gradient-box'
+                    style={{
+                      width: '100%', 
+                      height: '10px',
+                      background: getGradient(
+                        Math.floor(entry.temp_min),
+                        Math.floor(entry.temp_max),
+                        temperatureUnit
+                      ),
+                      borderRadius: '20px',
+                    }}
+                  />
+                </Box>
+                <Box width='20%' textAlign='center'>
+                  <p>
+                    {Math.floor(entry.temp_max)}°
+                    {temperatureUnit === 'fahrenheit' ? 'F' : 'C'}
+                  </p>
+                </Box>
+              </DailyItemContainer>
+              {index < array.length - 1 && (
                 <Divider
-                style={{
-                  backgroundColor: theme.palette.custom.white, // Use the custom white color
+                sx={{
+                  backgroundColor: theme.palette.custom.white, 
                   marginLeft: '3em',
                   marginRight: '3em',
+                
+                  '@media (max-width: 768px)': {
+                    marginLeft: '2em', 
+                    marginRight: '2em',
+                  },
+
+                  '@media (max-width: 480px)': {
+                    marginLeft: '.5em', 
+                    marginRight: '.5em',
+                  },
                 }}
               />
+              
               )}
-              </>
-            );
-            
+            </>
+          );
         })}
-      </Box>
+      </DailyContainer>
     </>
   );
 };

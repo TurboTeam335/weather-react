@@ -34,10 +34,10 @@ const Navbar = ({ setWeatherData, setTemperatureUnit, temperatureUnit }) => {
       const { city } = await fetchHourlyWeather(query);
       await saveSearch(city);
       executeSearch();
-      setNoResults(false); // Reset no results state when search is successful
+      setNoResults(false); 
     } catch (error) {
       console.error('Error executing search:', error);
-      setNoResults(true); // Set no results state when there is an error
+      setNoResults(true); 
     }
   };
 
@@ -55,7 +55,7 @@ const Navbar = ({ setWeatherData, setTemperatureUnit, temperatureUnit }) => {
           handleInputChange={handleInputChange}
           handleSearchClick={handleSearchClick}
           noResults={noResults}
-          setNoResults={setNoResults} // Pass this down
+          setNoResults={setNoResults}
         />
 
         <TemperatureSelector

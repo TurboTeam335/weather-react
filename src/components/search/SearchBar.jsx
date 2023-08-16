@@ -14,23 +14,21 @@ const SearchBar = () => {
     handleInputChange,
     handleSearchClick,
     noResults,
-    resetNoResults, // Destructure this method from useSearchBar
+    resetNoResults, 
   } = useSearchBar(setWeatherData);
 
   const google = window.google;
   const theme = useTheme();
 
   const handlePlaceSelect = (place) => {
-    if (!place.address_components) return; // Return if no address components found
-
-    // Find the component that corresponds to the locality (city)
+    if (!place.address_components) return; 
     const cityComponent = place.address_components.find(
       (component) => component.types.includes('locality')
     );
 
     if (cityComponent) {
-      const cityName = cityComponent.long_name; // Extract the long name of the city
-      handleSearchClick(cityName); // Optionally, you can trigger a search immediately after selection
+      const cityName = cityComponent.long_name; 
+      handleSearchClick(cityName); 
     }
   };
 

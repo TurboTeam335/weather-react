@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Card, Box } from '@mui/material';
+import { Card, Box, Grid } from '@mui/material';
 import Navbar from './Navbar/Navbar';
 import LocationAndDate from './Weather/LocationAndDate';
 import WeatherCard from './Weather/WeatherCard';
@@ -17,37 +17,50 @@ const ParentComponent = ({ weatherData, setWeatherData }) => {
         temperatureUnit={temperatureUnit}
         setTemperatureUnit={setTemperatureUnit}
       />
+    <Box
+  sx={{
+    marginTop: { xs: '1em', md: '0' }, 
+  }}
+>
       <LocationAndDate weatherData={weatherData} />
-      <Box display='flex' justifyContent='space-between'>
-        <Card
-          sx={{
-            flex: '0 0 48%',
-            padding: 2,
-            background: 'transparent',
-            boxShadow: 'none',
-            borderRight: weatherData ? '1px solid white' : 'none',
-            borderRadius: '0',
-          }}
-        >
-          <WeatherCard
-            weatherData={weatherData}
-            temperatureUnit={temperatureUnit}
-          />
-        </Card>
-        <Card
-          sx={{
-            flex: '0 0 48%',
-            padding: 2,
-            background: 'transparent',
-            boxShadow: 'none',
-          }}
-        >
-          <WeatherInfoCard
-            weatherData={weatherData}
-            temperatureUnit={temperatureUnit}
-          />
-        </Card>
+
       </Box>
+      <Grid container spacing={2}>
+      <Grid item xs={12} md={6}>
+  <Card
+    sx={{
+      marginTop: { xs: '1em', md: '2em' }, 
+      padding: 2,
+      background: 'transparent',
+      boxShadow: 'none',
+      borderBottom: { xs: weatherData ? '1px solid white' : 'none', md: 'none' },
+      borderRight: { md: weatherData ? '1px solid white' : 'none', xs: 'none' },
+      borderRadius: '0',
+    }}
+  >
+    <WeatherCard
+      weatherData={weatherData}
+      temperatureUnit={temperatureUnit}
+    />
+  </Card>
+</Grid>
+
+        <Grid item xs={12} md={6}>
+          <Card
+            sx={{
+              marginTop: { xs: '0', md: '2em' },
+              padding: 2,
+              background: 'transparent',
+              boxShadow: 'none',
+            }}
+          >
+            <WeatherInfoCard
+              weatherData={weatherData}
+              temperatureUnit={temperatureUnit}
+            />
+          </Card>
+        </Grid>
+      </Grid>
 
       <Card
         sx={{
