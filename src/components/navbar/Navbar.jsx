@@ -43,6 +43,7 @@ const Navbar = ({ setWeatherData, setTemperatureUnit, temperatureUnit }) => {
 
   return (
     <AppBar position='static' color='transparent' elevation={0}>
+
       <StyledToolbar className='navbar'>
         <MenuButton
           previousSearches={previousSearches}
@@ -57,7 +58,7 @@ const Navbar = ({ setWeatherData, setTemperatureUnit, temperatureUnit }) => {
           noResults={noResults}
           setNoResults={setNoResults}
         />
-
+  
         <TemperatureSelector
           temperatureUnit={temperatureUnit}
           handleTemperatureChange={handleTemperatureChange}
@@ -71,6 +72,7 @@ const Navbar = ({ setWeatherData, setTemperatureUnit, temperatureUnit }) => {
       </StyledToolbar>
     </AppBar>
   );
+  
 };
 
 export default Navbar;

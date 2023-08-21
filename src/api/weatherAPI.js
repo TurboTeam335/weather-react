@@ -74,3 +74,21 @@ export const fetchWeatherAlerts = (lat, lon) => {
       throw error;
     });
 };
+
+
+export const reverseGeocode = (lat, lon) => {
+  const url = `http://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=1&appid=${apiKey}`;
+  return fetch(url)
+    .then(handleResponse)
+    .then(data => {
+      if (data.length > 0) {
+        return data[0].name; // Return the name of the first location found
+      } else {
+        throw new Error("Location not found");
+      }
+    })
+    .catch(error => {
+      console.error('Reverse Geocoding error:', error);
+      throw error;
+    });
+};

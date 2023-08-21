@@ -8,6 +8,9 @@ import {
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faClock } from '@fortawesome/free-solid-svg-icons';
+
 
 const HourlyForecast = ({ weatherData, temperatureUnit }) => {
   // State to manage whether to show the slider
@@ -94,7 +97,9 @@ const HourlyForecast = ({ weatherData, temperatureUnit }) => {
   return (
     <>
       <TodayWeatherContainer>
-        <h3>Today's Weather</h3>
+      <h3>
+        <FontAwesomeIcon icon={faClock} /> Today's Weather
+      </h3>
       </TodayWeatherContainer>
       <ForecastContainer>
         {showSlider ? (

@@ -5,4 +5,9 @@
 .menu-paper {
   background-color: rgba(16, 43, 109, .7); 
   color: #E4EFFF; 
+  border-radius: 0px;
+}
+
+.menu-locked-position {
+  position: fixed !important;
 }

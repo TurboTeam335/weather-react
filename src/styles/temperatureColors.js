@@ -1,26 +1,34 @@
 export const getTemperatureColor = (temp, unit) => {
   if (unit === 'fahrenheit') {
-    if (temp < -5) return '#e5eeff';
-    if (temp < 10) return '#99b1d7';
-    if (temp < 40) return '#294d7f'
-    if (temp < 60) return '#759387'
-    if (temp < 75) return '#bfa96d'
-    if (temp < 80) return '#b7925e';
-    if (temp < 90) return '#b37953'
-    if (temp < 100) return '#a64c4c';
-    if (temp < 110) return '#9e214c';
-    return '#460f26';
+    if (temp < -20) return '#2b276a';
+    if (temp < -5) return '#323c9e';
+    if (temp < 0) return '#3b4ad1';
+    if (temp < 10) return '#4775d4';
+    if (temp < 15) return '#5296e4';
+    if (temp < 20) return '#66a2e8';
+    if (temp < 40) return '#84b63a';
+    if (temp < 56) return '#8ec547'; 
+    if (temp < 72) return '#94bd50';
+    if (temp < 77) return '#b4c92b';
+    if (temp < 82) return '#e0a331';
+    if (temp < 86) return '#e89331';
+    if (temp < 92) return '#e56d25'; 
+    return '#8c2e15';
   } else {
-    if (temp < -20) return '#e5eeff';
-    if (temp < -12) return '#99b1d7';
-    if (temp < 4) return '#294d7f'
-    if (temp < 15) return '#759387'
-    if (temp < 23) return '#bfa96d'
-    if (temp < 26) return '#b7925e';
-    if (temp < 32) return '#b37953'
-    if (temp < 38) return '#a64c4c';
-    if (temp < 43) return '#9e214c';
-    return '#460f26';
+    if (temp < -29) return '#2b276a';
+    if (temp < -21) return '#323c9e';
+    if (temp < -18) return '#3b4ad1';
+    if (temp < -12) return '#4775d4';
+    if (temp < -9) return '#5296e4';
+    if (temp < -7) return '#66a2e8';
+    if (temp < 4) return '#84b63a';
+    if (temp < 13) return '#8ec547'; 
+    if (temp < 22) return '#94bd50';
+    if (temp < 25) return '#b4c92b';
+    if (temp < 28) return '#e0a331';
+    if (temp < 30) return '#e89331';
+    if (temp < 33) return '#e56d25'; 
+    return '#8c2e15';
   }
 };
 

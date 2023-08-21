@@ -8,6 +8,9 @@ import {
   DailyContainer,
   DailyItemContainer,
 } from '../../styles/DailyForecastStyles';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCalendar } from '@fortawesome/free-solid-svg-icons';
+
 
 const DailyForecast = ({ weatherData, temperatureUnit }) => {
   const theme = useTheme();
@@ -46,7 +49,9 @@ const DailyForecast = ({ weatherData, temperatureUnit }) => {
   return (
     <>
       <StyledBox>
-        <h3>5-Day Forecast</h3>
+      <h3>
+    <FontAwesomeIcon icon={faCalendar} /> 5-Day Forecast
+  </h3>
       </StyledBox>
       <DailyContainer>
         {Object.values(dailyData).map((entry, index, array) => {

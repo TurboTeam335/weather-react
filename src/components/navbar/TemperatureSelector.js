@@ -9,26 +9,29 @@ const TemperatureSelector = ({ temperatureUnit, handleTemperatureChange }) => {
       value={temperatureUnit}
       onChange={handleTemperatureChange}
       MenuProps={{
+        anchorScrolling: 'none', // This line disables scrolling anchoring
+        getContentAnchorEl: null, // This line sets the content anchor to null
         PaperProps: {
           style: {
             backgroundColor: theme.palette.custom.blue,
+            position: 'fixed', // This line makes the menu have a fixed position
           },
         },
       }}
       sx={{
         color: theme.palette.custom.white,
-        '& .MuiSelect-select': { 
-          backgroundColor: 'transparent', 
-          paddingRight: '24px', 
+        '& .MuiSelect-select': {
+          backgroundColor: 'transparent',
+          paddingRight: '24px',
         },
-        '& .MuiOutlinedInput-notchedOutline': { 
-          border: 'none', 
+        '& .MuiOutlinedInput-notchedOutline': {
+          border: 'none',
         },
-        '&:hover .MuiOutlinedInput-notchedOutline': { 
-          border: 'none', 
+        '&:hover .MuiOutlinedInput-notchedOutline': {
+          border: 'none',
         },
-        '& .MuiSelect-icon': { 
-          color: theme.palette.custom.white, 
+        '& .MuiSelect-icon': {
+          color: theme.palette.custom.white,
         },
       }}
     >
